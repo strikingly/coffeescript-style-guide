@@ -452,7 +452,7 @@ return @ # No
 ```
 
 Always use explicit `return` in multi-line functions to improve clarity.
-Never use explicit `return` in single-line functions.
+Do not use explicit `return` in single-line functions.
 
 ```coffeescript
 func = -> # Yes
