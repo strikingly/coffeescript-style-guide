@@ -293,11 +293,11 @@ brush.ellipse # Yes
 brush.ellipse x: 10, y: 20 # No, easy to misread.
 ```
 
-Opt against grouping functions together.
+Opt against grouping functions together with parentheses.
 
 ```coffeescript
-$('#selektor').addClass 'klass' # Yes
 ($ '#selektor').addClass 'klass' # No
+$('#selektor').addClass 'klass' # Yes
 ```
 
 <a name="strings"/>
