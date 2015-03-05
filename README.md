@@ -451,18 +451,20 @@ return this # Yes
 return @ # No
 ```
 
-Always use explicit `return` in multiline functions to improve clarity.
+Always use explicit `return` in multi-line functions to improve clarity.
+Never use explicit `return` in single-line functions.
 
 ```coffeescript
 func = -> # Yes
   x = doSomething()
   y = x + 5
   return y
-func = -> doSomething() + 5 # Yes
 func = -> # No
   x = doSomething()
   y = x + 5
   y
+func = -> doSomething() + 5 # Yes
+func = -> return doSomething() + 5 # No
 ```
 
 Use splats (`...`) when working with functions that accept variable numbers of arguments:
