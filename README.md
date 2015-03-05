@@ -445,6 +445,8 @@ return @property # Yes
 return this.property # No
 ```
 
+However, avoid the use of **standalone** `@`:
+
 Always use explicit `return` in multiline functions to improve clarity.
 
 ```coffeescript
