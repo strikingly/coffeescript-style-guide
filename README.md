@@ -445,7 +445,19 @@ return @property # Yes
 return this.property # No
 ```
 
-Avoid `return` where not required, unless the explicit return increases clarity.
+Always use explicit `return` in multiline functions to improve clarity.
+
+```coffeescript
+func = -> # Yes
+  x = doSomething()
+  y = x + 5
+  return y
+func = -> doSomething() + 5 # Yes
+func = -> # No
+  x = doSomething()
+  y = x + 5
+  y
+```
 
 Use splats (`...`) when working with functions that accept variable numbers of arguments:
 
