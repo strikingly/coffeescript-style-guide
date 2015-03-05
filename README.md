@@ -179,19 +179,17 @@ If a comment is short, the period at the end can be omitted.
 <a name="block_comments"/>
 ### Block Comments
 
-Block comments apply to the block of code that follows them.
-
-Each line of a block comment starts with a `#` and a single space, and should be indented at the same level of the code that it describes.
-
-Paragraphs inside of block comments are separated by a line containing a single `#`.
+Use `###` for block comments.
 
 ```coffeescript
-  # This is a block comment. Note that if this were a real block
-  # comment, we would actually be describing the proceeding code.
-  #
-  # This is the second paragraph of the same block comment. Note
-  # that this paragraph was separated from the previous paragraph
-  # by a line containing a single comment character.
+  ###
+  This is a block comment. Note that if this were a real block
+  comment, we would actually be describing the proceeding code.
+  
+  This is the second paragraph of the same block comment. Note
+  that this paragraph was separated from the previous paragraph
+  by a line containing a single comment character.
+  ###
 
   init()
   start()
@@ -276,41 +274,31 @@ When calling functions, choose to omit or include parentheses in such a way that
 ```coffeescript
 baz 12
 
-brush.ellipse x: 10, y: 20 # Braces can also be omitted or included for readability
-
 foo(4).bar(8)
 
 obj.value(10, 20) / obj.value(20, 10)
 
-print inspect value
+print inspect value # Function order is clear, can omit parentheses
 
 new Tag(new Value(a, b), new Arg(c))
 ```
 
-You will sometimes see parentheses used to group functions (instead of being used to group function parameters). Examples of using this style (hereafter referred to as the "function grouping style"):
+When passing objects as parameters, use braces or new lines for clarity.
 
 ```coffeescript
-($ '#selektor').addClass 'klass'
-
-(foo 4).bar 8
+brush.ellipse {x: 10, y: 20} # Yes
+brush.ellipse # Yes
+  x: 10
+  y: 20
+brush.ellipse x: 10, y: 20 # No, easy to misread.
 ```
 
-This is in contrast to:
+Opt against grouping functions together.
 
 ```coffeescript
-$('#selektor').addClass 'klass'
-
-foo(4).bar 8
+$('#selektor').addClass 'klass' # Yes
+($ '#selektor').addClass 'klass' # No
 ```
-
-In cases where method calls are being chained, some adopters of this style prefer to use function grouping for the initial call only:
-
-```coffeescript
-($ '#selektor').addClass('klass').hide() # Initial call only
-(($ '#selektor').addClass 'klass').hide() # All calls
-```
-
-The function grouping style is not recommended. However, **if the function grouping style is adopted for a particular project, be consistent with its usage.**
 
 <a name="strings"/>
 ## Strings
