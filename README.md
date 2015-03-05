@@ -423,20 +423,13 @@ If a custom annotation is required, the annotation should be documented in the p
 <a name="miscellaneous"/>
 ## Miscellaneous
 
-`and` is preferred over `&&`.
+`&&` is preferred over `and`.
 
-`or` is preferred over `||`.
+`||` is preferred over `or`.
 
-`is` is preferred over `==`.
+`==` is preferred over `is`.
 
-`not` is preferred over `!`.
-
-`or=` should be used when possible:
-
-```coffeescript
-temp or= {} # Yes
-temp = temp || {} # No
-```
+`!` is preferred over `not`.
 
 Prefer shorthand notation (`::`) for accessing an object's prototype:
 
@@ -450,13 +443,6 @@ Prefer `@property` over `this.property`.
 ```coffeescript
 return @property # Yes
 return this.property # No
-```
-
-However, avoid the use of **standalone** `@`:
-
-```coffeescript
-return this # Yes
-return @ # No
 ```
 
 Avoid `return` where not required, unless the explicit return increases clarity.
