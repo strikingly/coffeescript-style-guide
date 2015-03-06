@@ -423,13 +423,15 @@ If a custom annotation is required, the annotation should be documented in the p
 <a name="miscellaneous"/>
 ## Miscellaneous
 
-`&&` is preferred over `and`.
+Do not use word aliases for logical operators. In Ruby, `&&` and `and` mean different things, with `and` being rarely used, so this is to reduce the mental gap between the Coffee and Ruby. Also gets closer to native JS.
 
-`||` is preferred over `or`.
+Use `&&` instead of `and`.
 
-`==` is preferred over `is`.
+Use `||` instead of `or`.
 
-`!` is preferred over `not`.
+Use `==` instead of `is`.
+
+Use `!` instead of `not`.
 
 Prefer shorthand notation (`::`) for accessing an object's prototype:
 
