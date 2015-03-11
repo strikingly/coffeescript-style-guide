@@ -125,8 +125,8 @@ Avoid extraneous whitespace in the following situations:
 - Immediately inside parentheses, brackets or braces
 
     ```coffeescript
-       ($ 'body') # Yes
-       ( $ 'body' ) # No
+       $('body') # Yes
+       $( 'body' ) # No
     ```
 
 - Immediately before a comma
@@ -142,11 +142,11 @@ Additional recommendations:
 
     - assignment: `=`
 
-        - _Note that this also applies when indicating default parameter value(s) in a function declaration_
+        - _However, omit spaces when indicating default parameter value(s) in a function declaration_
 
            ```coffeescript
-           test: (param = null) -> # Yes
-           test: (param=null) -> # No
+           test: (param=null) -> # Yes
+           test: (param = null) -> # No
            ```
 
     - augmented assignment: `+=`, `-=`, etc.
@@ -179,19 +179,17 @@ If a comment is short, the period at the end can be omitted.
 <a name="block_comments"/>
 ### Block Comments
 
-Block comments apply to the block of code that follows them.
-
-Each line of a block comment starts with a `#` and a single space, and should be indented at the same level of the code that it describes.
-
-Paragraphs inside of block comments are separated by a line containing a single `#`.
+Use `###` for block comments.
 
 ```coffeescript
-  # This is a block comment. Note that if this were a real block
-  # comment, we would actually be describing the proceeding code.
-  #
-  # This is the second paragraph of the same block comment. Note
-  # that this paragraph was separated from the previous paragraph
-  # by a line containing a single comment character.
+  ###
+  This is a block comment. Note that if this were a real block
+  comment, we would actually be describing the proceeding code.
+  
+  This is the second paragraph of the same block comment. Note
+  that this paragraph was separated from the previous paragraph
+  by a line containing a single comment character.
+  ###
 
   init()
   start()
@@ -276,41 +274,31 @@ When calling functions, choose to omit or include parentheses in such a way that
 ```coffeescript
 baz 12
 
-brush.ellipse x: 10, y: 20 # Braces can also be omitted or included for readability
-
 foo(4).bar(8)
 
 obj.value(10, 20) / obj.value(20, 10)
 
-print inspect value
+print inspect value # Function order is clear, can omit parentheses
 
 new Tag(new Value(a, b), new Arg(c))
 ```
 
-You will sometimes see parentheses used to group functions (instead of being used to group function parameters). Examples of using this style (hereafter referred to as the "function grouping style"):
+When passing objects as parameters, use braces or new lines for clarity.
 
 ```coffeescript
-($ '#selektor').addClass 'klass'
-
-(foo 4).bar 8
+brush.ellipse {x: 10, y: 20} # Yes
+brush.ellipse # Yes
+  x: 10
+  y: 20
+brush.ellipse x: 10, y: 20 # No, easy to misread.
 ```
 
-This is in contrast to:
+Opt against grouping functions together with parentheses.
 
 ```coffeescript
-$('#selektor').addClass 'klass'
-
-foo(4).bar 8
+($ '#selektor').addClass 'klass' # No
+$('#selektor').addClass 'klass' # Yes
 ```
-
-In cases where method calls are being chained, some adopters of this style prefer to use function grouping for the initial call only:
-
-```coffeescript
-($ '#selektor').addClass('klass').hide() # Initial call only
-(($ '#selektor').addClass 'klass').hide() # All calls
-```
-
-The function grouping style is not recommended. However, **if the function grouping style is adopted for a particular project, be consistent with its usage.**
 
 <a name="strings"/>
 ## Strings
@@ -374,6 +362,19 @@ Take advantage of comprehensions whenever possible:
     results.push item.name
 ```
 
+Use `when` to simplify `for` loops with a conditional:
+
+```coffeescript
+  # Yes
+  for i in array when i > 5
+    doSomething()
+    
+  # No
+  for i in array
+    if i > 5
+      doSomething()
+```
+
 To filter:
 
 ```coffeescript
@@ -435,20 +436,15 @@ If a custom annotation is required, the annotation should be documented in the p
 <a name="miscellaneous"/>
 ## Miscellaneous
 
-`and` is preferred over `&&`.
+Do not use word aliases for logical operators. In Ruby, `&&` and `and` mean different things, with `and` being rarely used, so this is to reduce the mental gap between the Coffee and Ruby. Also gets closer to native JS.
 
-`or` is preferred over `||`.
+Use `&&` instead of `and`.
 
-`is` is preferred over `==`.
+Use `||` instead of `or`.
 
-`not` is preferred over `!`.
+Use `==` instead of `is`.
 
-`or=` should be used when possible:
-
-```coffeescript
-temp or= {} # Yes
-temp = temp || {} # No
-```
+Use `!` instead of `not`.
 
 Prefer shorthand notation (`::`) for accessing an object's prototype:
 
@@ -465,13 +461,26 @@ return this.property # No
 ```
 
 However, avoid the use of **standalone** `@`:
-
 ```coffeescript
 return this # Yes
 return @ # No
 ```
 
-Avoid `return` where not required, unless the explicit return increases clarity.
+Always use explicit `return` in multi-line functions to improve clarity.
+Do not use explicit `return` in single-line functions.
+
+```coffeescript
+func = -> # Yes
+  x = doSomething()
+  y = x + 5
+  return y
+func = -> # No
+  x = doSomething()
+  y = x + 5
+  y
+func = -> doSomething() + 5 # Yes
+func = -> return doSomething() + 5 # No
+```
 
 Use splats (`...`) when working with functions that accept variable numbers of arguments:
 
