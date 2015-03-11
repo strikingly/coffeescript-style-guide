@@ -362,6 +362,19 @@ Take advantage of comprehensions whenever possible:
     results.push item.name
 ```
 
+We `when` to simplify `for` loops with a conditional:
+
+```coffeescript
+  # Yes
+  for i in array when i > 5
+    doSomething()
+    
+  # No
+  for i in array
+    if i > 5
+      doSomething()
+```
+
 To filter:
 
 ```coffeescript
