@@ -362,7 +362,7 @@ Take advantage of comprehensions whenever possible:
     results.push item.name
 ```
 
-We `when` to simplify `for` loops with a conditional:
+Use `when` to simplify `for` loops with a conditional:
 
 ```coffeescript
   # Yes
