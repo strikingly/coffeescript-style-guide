@@ -35,7 +35,7 @@ The details in this guide have been very heavily inspired by several existing st
         * [Block Comments](#block_comments)
         * [Inline Comments](#inline_comments)
     * [Naming Conventions](#naming_conventions)
-    * [Functions](#functions)#
+    * [Functions](#functions)
     * [Strings](#strings)
     * [Conditionals](#conditionals)
     * [Looping and Comprehensions](#looping_and_comprehensions)
@@ -107,7 +107,6 @@ Opt against braces when defining multi-line object literals.
 obj = 
   foo: 1
   bar: 2
-  
 # No
 obj = {
   foo: 1
