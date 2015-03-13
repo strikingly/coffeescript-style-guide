@@ -107,6 +107,7 @@ Opt against braces when defining multi-line object literals.
 obj = 
   foo: 1
   bar: 2
+  
 # No
 obj = {
   foo: 1
