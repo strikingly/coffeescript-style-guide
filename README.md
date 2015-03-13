@@ -27,6 +27,7 @@ The details in this guide have been very heavily inspired by several existing st
         * [Blank Lines](#blank_lines)
         * [Trailing Whitespace](#trailing_whitespace)
         * [Optional Commas](#optional_commas)
+        * [Braces](#braces)
         * [Encoding](#encoding)
     * [Module Imports](#module_imports)
     * [Whitespace in Expressions and Statements](#whitespace)
@@ -34,7 +35,7 @@ The details in this guide have been very heavily inspired by several existing st
         * [Block Comments](#block_comments)
         * [Inline Comments](#inline_comments)
     * [Naming Conventions](#naming_conventions)
-    * [Functions](#functions)
+    * [Functions](#functions)#
     * [Strings](#strings)
     * [Conditionals](#conditionals)
     * [Looping and Comprehensions](#looping_and_comprehensions)
@@ -96,6 +97,23 @@ bar:
   label: 'test',
   value: 87
 ```
+
+<a name="braces"/>
+### Braces
+
+Opt against braces when defining multi-line object literals.
+```coffeescript
+# Yes
+obj = 
+  foo: 1
+  bar: 2
+# No
+obj = {
+  foo: 1
+  bar: 2
+}
+```
+
 
 <a name="encoding"/>
 ### Encoding
